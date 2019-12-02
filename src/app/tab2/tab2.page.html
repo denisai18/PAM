@@ -7,19 +7,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-item routerLink="/tabs/tab3/Bathroom" routerDirection="forward">
-      <ion-icon name="woman"></ion-icon><ion-label>Bathroom</ion-label>
-  </ion-item>
-  <ion-item routerLink="/tabs/tab3/LivingRoom" routerDirection="forward">
-      <ion-icon ios="ios-wine" md="md-wine"></ion-icon><ion-label>Living Room</ion-label>
-  </ion-item>
-  <ion-item routerLink="/tabs/tab3/Bedroom" routerDirection="forward">
-      <ion-icon name="moon"></ion-icon><ion-label>Bedroom</ion-label>
-  </ion-item>
-  <ion-item routerLink="/tabs/tab3/Kitchen" routerDirection="forward">
-      <ion-icon name="timer"></ion-icon><ion-label>Kitchen</ion-label>
-  </ion-item>
-  <ion-item routerLink="/tabs/tab3/Garage" routerDirection="forward">
-      <ion-icon ios="ios-car" md="ios-car"></ion-icon><ion-label>Garage</ion-label>
-  </ion-item>
+  <ion-card>
+    <ion-card-content>
+      <ion-label margin>Hello <strong>{{users.getCurrentUser().username}}</strong> here are your rooms:</ion-label>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let room of users.getRoomsForCurrentUser()" routerLink="/tabs/tab3/{{room.id}}">
+      <ion-icon name={{room.iconName}} slot='start'></ion-icon><ion-label>{{room.name}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
